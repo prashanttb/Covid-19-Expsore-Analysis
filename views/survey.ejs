@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('partials/header.ejs') %>
+</head>
+<body>
+    
+
+    <%- include('partials/nav2.ejs') %>
+
+<section id="contact" style="margin-top: 5%; background-color:beige;margin-top: 0;">
+    <div class="container-lg" >
+        <div class="text-center">
+            <h2>Self Assessment</h2>
+        </div>
+        <div class="row justify-content-center my-5" >
+            <div class="col-lg-6">
+                <form action="/survey" method="POST">
+                    <h2><label for="age">Age</label>
+                    <input class="form-control" type="number" name="age"><br>
+
+                    <label for="vaccine">Have you taken the vaccination?</label><br>
+                    <input class="form-check-input" type="radio" c name="vaccine" id="">Yes
+                    <input class="form-check-input" type="radio" c name="vaccine" id="">No <br>
+                    <hr>
+                    <label for="pvs">Did you have Covid in past 3 months?</label><br>
+                    <input class="form-check-input" type="radio" c name="pvs" id="">Yes
+                    <input class="form-check-input" type="radio" c name="pvs" id="">No <br>
+                    <hr>
+                    <label for="test">Do you have covid now?</label><br>
+                    <input class="form-check-input" type="radio" c name="test" id="" value="Yes">Yes
+                    <input class="form-check-input" type="radio" c name="test" id="" value="No">No <br>
+                    <hr>
+                    <label for="symptom">Are you currently experiencing any of the following symptoms?</label><br>
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="Fever">Fever
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="Cough">Cough
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="Loss of Taste or smell">Loss of Taste or smell
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="Headache">Headache
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="Sore Throat">Sore Throat
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="Difficulty in Breathing">Difficulty in Breathing
+                    <input class="form-check-input" type="radio" c name="symptom" id="" value="None">None
+                    <br>
+                    <hr>
+                    <label for="pre">Do you have any of the following pre-existing conditions</label><br>
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="Diabetes">Diabetes
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="Hypertension">Hypertension
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="Lung Disease">Lung Disease
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="Heart Disease">Heart Disease
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="Kidney Disorder">Kidney Disorder
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="Asthma">Asthma
+                    <input class="form-check-input" type="radio" c name="medhis" id="" value="None">None
+                    <br>
+                </h2>
+                    <input class="btn btn-success" type="submit" value="Submit">
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <%- include('partials/header.ejs') %>
+    <title>Document</title>
+</head>
+<body>
+     
+    <%- include('partials/nav2.ejs') %>
+    
+    <div class="container text-center">
+        <div class="ind">
+            <h2>INDIA <br> POSITIVE CASES: <%= total[0].count %></h2>
+            <h2>AT RISK CASES(CONTACTED TO POSITIVE PATIENTS): <%= contacted %></h2><br>
+            <h4>Click on the map to get that districts cases</h4>
+        </div>
+        
+        <div class="positive">
+            <h2>DISTRICT:
+            <% if(count!=undefined){%>
+            
+            <% if(district!=undefined) {%>
+                <%= district %></h2>
+                <% } %>
+
+            <h2>POSITIVE CASES: <%= count %></h2>
+            <% } %>
+        </div>
+
+        <div class="risk" style="color: yellowgreen;">
+            <h1>YOUR STATUS: <%= risk %> </h1>
+        </div>
+        
+        <div id="map" style="max-height: 800px;">
+            <!-- <div id="overlay" style="position:absolute; top:0px; left:100px; background-color:white; width:100px; height:100px; z-index: 100"> My Test</div> -->
+        </div>
+        
+    </div>
+
+    
+  
+
+
+
+
+    <form action="/filter" onsubmit="return false" method="POST" id="form-id">
+        <input type="hidden" name="lat" id="point1" value="">
+        <input type="hidden" name="lng" id="point2" value="">
+    </form>
+
+
+    <% for(var i = 0;i<locations.length;i++){ %>
+        <input class="t1" type="hidden" value="<%= locations[i].latitude %>">
+        <input class="t2" type="hidden" value="<%= locations[i].longitude %>">
+    <% } %>
+    
+
+    <script>
+
+        var map_init = L.map('map',{
+            center:[21.0000,79.0000],
+            zoom:5
+        })
+
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+            attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map_init)
+
+
+        var n1 = document.getElementsByClassName('t1');
+        var n2 = document.getElementsByClassName('t2');
+
+
+    
+
+        var p = '<>'
+
+
+        for(var i=0;i<n1.length;i++){
+
+            var marker = L.marker([parseFloat(document.getElementsByClassName('t1')[i].value),parseFloat(document.getElementsByClassName('t2')[i].value)]).addTo(map_init).bindPopup('.').on('click',function(e){
+            // alert(e.latlng)
+            document.getElementById("point1").value=e.latlng.lat;
+            document.getElementById("point2").value=e.latlng.lng;
+            document.getElementById("form-id").submit()  
+        })
+
+          
+        }
+    
+
+        
+    </script>
+
+    
+    
+
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+{
+  "name": "sgdb_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=production node app",
+    "dev": "cross-env NODE_ENV=development nodemon app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "ejs": "2.4.2",
+    "express": "*",
+    "express-session": "^1.17.2",
+    "leaflet": "^1.7.1",
+    "morgan": "*",
+    "neo4j-driver": "*",
+    "nodemon": "*",
+    "pg": "^8.7.1",
+    "sessionstore": "^1.3.7"
+  }
+}
